@@ -22,9 +22,6 @@ public class Journal
             return;
         }
 
-        Console.WriteLine("Journal Entries");
-        Console.WriteLine();
-
         foreach (Entry entry in _entries)
         {
             entry.Display();
@@ -63,12 +60,14 @@ public class Journal
 
             string[] lines = File.ReadAllLines(filename);
 
-            // Replace current entries, per assignment requirements
-            _entries = new List<Entry>();
+            _entries.Clear();
 
             foreach (string line in lines)
             {
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    continue;
+                }
 
                 Entry entry = Entry.FromFileLine(line);
                 _entries.Add(entry);
@@ -82,3 +81,4 @@ public class Journal
         }
     }
 }
+
