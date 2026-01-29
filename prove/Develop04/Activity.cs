@@ -33,16 +33,22 @@ public class Activity
         ShowSpinner(3);
     }
 
-    // Simple spinner animation
-    public void ShowSpinner(int seconds)
+    // Displays a rotating spinner animation for a given number of seconds
+public void ShowSpinner(int seconds)
+{
+    string[] spinner = { "|", "/", "-", "\\" };  // characters for spinner effect
+    DateTime endTime = DateTime.Now.AddSeconds(seconds);
+    int i = 0;
+
+    while (DateTime.Now < endTime)
     {
-        for (int i = 0; i < seconds; i++)
-        {
-            Console.Write(".");
-            Thread.Sleep(1000);
-        }
-        Console.WriteLine();
+        Console.Write(spinner[i]);
+        Thread.Sleep(200);         // controls speed of spin
+        Console.Write("\b \b");    // backspace, erase, and overwrite character
+        i = (i + 1) % spinner.Length;
     }
+}
+
 
     // Duration accessor
     public int GetDuration()
