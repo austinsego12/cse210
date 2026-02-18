@@ -1,14 +1,22 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        Reference reference = new Reference("John", 3, 16);
-        Scripture scripture = new Scripture(reference,
-            "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
+        List<Activity> activities = new List<Activity>();
 
-        Memorizer memorizer = new Memorizer(scripture);
-        memorizer.Run();
+        activities.Add(new RunningActivity("03 Nov 2025", 30, 3.1));     // miles
+        activities.Add(new CyclingActivity("10 Nov 2025", 45, 16.0));    // mph
+        activities.Add(new SwimmingActivity("20 Nov 2025", 25, 40));     // laps
+
+        Console.WriteLine("Exercise Tracking\n");
+
+        foreach (Activity activity in activities)
+        {
+            Console.WriteLine(activity.GetSummary());
+        }
     }
 }
+

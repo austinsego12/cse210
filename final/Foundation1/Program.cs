@@ -1,66 +1,41 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        Journal journal = new Journal();
-        PromptGenerator promptGenerator = new PromptGenerator();
+        List<Video> videos = new List<Video>();
 
-        while (true)
+        Video v1 = new Video("How to Cook Chicken Alfredo", "ChefNova", 420);
+        v1.AddComment(new Comment("Mia", "This turned out amazing."));
+        v1.AddComment(new Comment("Jordan", "I added extra garlic and it was perfect."));
+        v1.AddComment(new Comment("Sam", "Clear instructions. Thank you."));
+        videos.Add(v1);
+
+        Video v2 = new Video("C# Classes Explained Fast", "CodeSprint", 610);
+        v2.AddComment(new Comment("Ava", "This finally made it click."));
+        v2.AddComment(new Comment("Ethan", "The examples were super helpful."));
+        videos.Add(v2);
+
+        Video v3 = new Video("Best Home Workout Routine", "FitDaily", 540);
+        v3.AddComment(new Comment("Noah", "Doing this daily now."));
+        v3.AddComment(new Comment("Lily", "I felt the burn, in a good way."));
+        v3.AddComment(new Comment("Chris", "Can you make a beginner version too?"));
+        v3.AddComment(new Comment("Zoe", "Love the pacing."));
+        videos.Add(v3);
+
+        Console.WriteLine("YouTube Videos\n");
+
+        foreach (Video video in videos)
         {
+            Console.WriteLine(video.GetDisplayText());
+            Console.WriteLine("Comments:");
+            foreach (Comment comment in video.GetComments())
+            {
+                Console.WriteLine($"  - {comment.GetDisplayText()}");
+            }
             Console.WriteLine();
-            Console.WriteLine("Journal Program");
-            Console.WriteLine("1. Write a new entry");
-            Console.WriteLine("2. Display the journal");
-            Console.WriteLine("3. Save the journal to a file");
-            Console.WriteLine("4. Load the journal from a file");
-            Console.WriteLine("5. Quit");
-            Console.Write("Select an option: ");
-
-            string choice = Console.ReadLine();
-
-            if (choice == "1")
-            {
-                string prompt = promptGenerator.GetRandomPrompt();
-                Console.WriteLine();
-                Console.WriteLine(prompt);
-                Console.Write("> ");
-                string response = Console.ReadLine();
-
-                string date = DateTime.Now.ToShortDateString();
-                Entry entry = new Entry(date, prompt, response);
-
-                journal.AddEntry(entry);
-                Console.WriteLine("Entry added.");
-            }
-            else if (choice == "2")
-            {
-                Console.WriteLine();
-                journal.DisplayAll();
-            }
-            else if (choice == "3")
-            {
-                Console.Write("Enter filename to save: ");
-                string filename = Console.ReadLine();
-                journal.Save(filename);
-                Console.WriteLine("Journal saved.");
-            }
-            else if (choice == "4")
-            {
-                Console.Write("Enter filename to load: ");
-                string filename = Console.ReadLine();
-                journal.Load(filename);
-                Console.WriteLine("Journal loaded.");
-            }
-            else if (choice == "5")
-            {
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Invalid choice. Try again.");
-            }
         }
     }
 }

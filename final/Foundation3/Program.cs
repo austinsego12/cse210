@@ -1,54 +1,57 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        GoalManager manager = new GoalManager();
-        bool running = true;
+        List<Event> events = new List<Event>();
 
-        while (running)
+        events.Add(new LectureEvent(
+            "AI in Business",
+            "A lecture on how AI is changing business operations.",
+            "March 10, 2026",
+            "6:00 PM",
+            new Address("200 Campus Dr", "Rexburg", "ID", "USA"),
+            "Dr. Elena Park",
+            120
+        ));
+
+        events.Add(new ReceptionEvent(
+            "Spring Networking Night",
+            "Meet and connect with students and local professionals.",
+            "April 2, 2026",
+            "7:30 PM",
+            new Address("55 Event Hall Ln", "Idaho Falls", "ID", "USA"),
+            "rsvp@eventmail.com"
+        ));
+
+        events.Add(new OutdoorGatheringEvent(
+            "Community Picnic",
+            "Outdoor picnic with games and food.",
+            "May 15, 2026",
+            "12:00 PM",
+            new Address("1 Riverside Park", "Rexburg", "ID", "USA"),
+            "Sunny, 72F"
+        ));
+
+        Console.WriteLine("Event Planning\n");
+
+        foreach (Event ev in events)
         {
+            Console.WriteLine("STANDARD DETAILS");
+            Console.WriteLine(ev.GetStandardDetails());
             Console.WriteLine();
-            Console.WriteLine("Eternal Quest Program");
-            Console.WriteLine($"Current Score: {manager.GetScore()}");
+
+            Console.WriteLine("FULL DETAILS");
+            Console.WriteLine(ev.GetFullDetails());
             Console.WriteLine();
-            Console.WriteLine("1. Create New Goal");
-            Console.WriteLine("2. List Goals");
-            Console.WriteLine("3. Save Goals");
-            Console.WriteLine("4. Load Goals");
-            Console.WriteLine("5. Record Event");
-            Console.WriteLine("6. Quit");
-            Console.Write("Select an option: ");
 
-            string choice = Console.ReadLine();
-
-            switch (choice)
-            {
-                case "1":
-                    manager.CreateGoal();
-                    break;
-                case "2":
-                    manager.ListGoals();
-                    break;
-                case "3":
-                    Console.Write("Enter filename to save: ");
-                    manager.SaveGoals(Console.ReadLine());
-                    break;
-                case "4":
-                    Console.Write("Enter filename to load: ");
-                    manager.LoadGoals(Console.ReadLine());
-                    break;
-                case "5":
-                    manager.RecordEvent();
-                    break;
-                case "6":
-                    running = false;
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice.");
-                    break;
-            }
+            Console.WriteLine("SHORT DETAILS");
+            Console.WriteLine(ev.GetShortDetails());
+            Console.WriteLine("\n----------------------------\n");
         }
     }
 }
+
+
