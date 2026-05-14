@@ -3,15 +3,15 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
-        // Creativity and exceeding requirements:
-        // I added a mood and rating feature to each journal entry.
-        // This helps the user track not only what happened, but also how they felt that day.
-        // I also added a search by mood option so the user can review entries connected to a certain feeling.
-        // The save and load system encodes each field so commas, pipes, and special characters in the journal entry do not break the file.
+{
+    // Creativity and exceeding requirements:
+    // I made this journal more personal by adding a mood and daily rating feature.
+    // I also included a Search by Mood option so I can look back at entries based on how I was feeling.
+    // I wanted the journal to feel more useful for real life, especially for reflecting on family, faith, gratitude, and personal growth.
+    // The save and load system also encodes the entry fields so special characters do not break the saved file.
 
-        Journal journal = new Journal();
-        PromptGenerator promptGenerator = new PromptGenerator();
+    Journal journal = new Journal();
+    PromptGenerator promptGenerator = new PromptGenerator();
 
         string choice = "";
 
