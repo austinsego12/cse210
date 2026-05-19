@@ -19,14 +19,15 @@ public class Entry
     }
 
     public void Display()
-    {
-        Console.WriteLine();
-        Console.WriteLine($"Date: {_date}");
-        Console.WriteLine($"Prompt: {_prompt}");
-        Console.WriteLine($"Response: {_response}");
-        Console.WriteLine($"Mood: {_mood}");
-        Console.WriteLine($"Rating: {_rating}/10");
-    }
+{
+    Console.WriteLine();
+    Console.WriteLine("My Journal Reflection");
+    Console.WriteLine($"Date: {_date}");
+    Console.WriteLine($"Prompt: {_prompt}");
+    Console.WriteLine($"Response: {_response}");
+    Console.WriteLine($"Mood: {_mood}");
+    Console.WriteLine($"Daily Growth Rating: {_rating}/10");
+}
 
     public string GetMood()
     {
