@@ -4,10 +4,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        Reference reference = new Reference("Proverbs", 3, 5, 6);
+        // Exceeding Requirements:
+        // This program randomly hides only words that are not already hidden.
+        // This improves the memorization practice because each time the user presses Enter,
+        // new words are hidden instead of wasting turns on words that were already hidden.
 
         Scripture scripture = new Scripture(
-            reference,
+            "Proverbs",
+            3,
+            5,
+            6,
             "Trust in the Lord with all thine heart and lean not unto thine own understanding"
         );
 
@@ -17,7 +23,7 @@ class Program
         {
             Console.Clear();
 
-            Console.WriteLine(scripture.GetDisplayText());
+            Console.WriteLine(scripture.Display());
             Console.WriteLine();
             Console.WriteLine("Press Enter to continue or type 'quit' to finish:");
 
@@ -30,7 +36,7 @@ class Program
         }
 
         Console.Clear();
-        Console.WriteLine(scripture.GetDisplayText());
+        Console.WriteLine(scripture.Display());
         Console.WriteLine();
         Console.WriteLine("Program ended.");
     }
