@@ -11,7 +11,27 @@ class Program
             "Trust in the Lord with all thine heart and lean not unto thine own understanding"
         );
 
+        string userInput = "";
+
+        while (userInput != "quit" && !scripture.IsCompletelyHidden())
+        {
+            Console.Clear();
+
+            Console.WriteLine(scripture.GetDisplayText());
+            Console.WriteLine();
+            Console.WriteLine("Press Enter to continue or type 'quit' to finish:");
+
+            userInput = Console.ReadLine();
+
+            if (userInput != "quit")
+            {
+                scripture.HideRandomWords(3);
+            }
+        }
+
         Console.Clear();
         Console.WriteLine(scripture.GetDisplayText());
+        Console.WriteLine();
+        Console.WriteLine("Program ended.");
     }
 }
