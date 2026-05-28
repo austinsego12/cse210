@@ -4,10 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Exceeding Requirements:
-        // This program randomly hides only words that are not already hidden.
-        // This improves the memorization practice because each time the user presses Enter,
-        // new words are hidden instead of wasting turns on words that were already hidden.
 
         Scripture scripture = new Scripture(
             "Proverbs",
