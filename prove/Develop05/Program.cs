@@ -9,8 +9,6 @@ class Program
 
     static void Main(string[] args)
     {
-        // Exceeding requirements idea to add later:
-        // I plan to add a leveling/rank system based on the user's score.
 
         string choice = "";
 
@@ -70,29 +68,51 @@ class Program
         Console.WriteLine();
         Console.WriteLine("The types of Goals are:");
         Console.WriteLine("  1. Simple Goal");
+        Console.WriteLine("  2. Eternal Goal");
+        Console.WriteLine("  3. Checklist Goal");
         Console.Write("Which type of goal would you like to create? ");
 
         string goalType = Console.ReadLine();
 
+        Console.Write("What is the name of your goal? ");
+        string name = Console.ReadLine();
+
+        Console.Write("What is a short description of it? ");
+        string description = Console.ReadLine();
+
+        Console.Write("What is the amount of points associated with this goal? ");
+        int points = int.Parse(Console.ReadLine());
+
         if (goalType == "1")
         {
-            Console.Write("What is the name of your goal? ");
-            string name = Console.ReadLine();
-
-            Console.Write("What is a short description of it? ");
-            string description = Console.ReadLine();
-
-            Console.Write("What is the amount of points associated with this goal? ");
-            int points = int.Parse(Console.ReadLine());
-
             SimpleGoal goal = new SimpleGoal(name, description, points);
             _goals.Add(goal);
 
             Console.WriteLine("Simple goal created!");
         }
+        else if (goalType == "2")
+        {
+            EternalGoal goal = new EternalGoal(name, description, points);
+            _goals.Add(goal);
+
+            Console.WriteLine("Eternal goal created!");
+        }
+        else if (goalType == "3")
+        {
+            Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+            int target = int.Parse(Console.ReadLine());
+
+            Console.Write("What is the bonus for accomplishing it that many times? ");
+            int bonusPoints = int.Parse(Console.ReadLine());
+
+            ChecklistGoal goal = new ChecklistGoal(name, description, points, target, bonusPoints);
+            _goals.Add(goal);
+
+            Console.WriteLine("Checklist goal created!");
+        }
         else
         {
-            Console.WriteLine("That goal type has not been added yet.");
+            Console.WriteLine("Invalid goal type.");
         }
     }
 
@@ -185,11 +205,7 @@ class Program
         for (int i = 1; i < lines.Length; i++)
         {
             BaseGoal goal = ParseGoalData(lines[i]);
-
-            if (goal != null)
-            {
-                _goals.Add(goal);
-            }
+            _goals.Add(goal);
         }
 
         Console.WriteLine("Goals loaded.");
@@ -210,7 +226,28 @@ class Program
 
             return new SimpleGoal(name, description, points, isComplete);
         }
+        else if (goalType == "EternalGoal")
+        {
+            string name = parts[1];
+            string description = parts[2];
+            int points = int.Parse(parts[3]);
 
-        return null;
+            return new EternalGoal(name, description, points);
+        }
+        else if (goalType == "ChecklistGoal")
+        {
+            string name = parts[1];
+            string description = parts[2];
+            int points = int.Parse(parts[3]);
+            int target = int.Parse(parts[4]);
+            int bonusPoints = int.Parse(parts[5]);
+            int completions = int.Parse(parts[6]);
+
+            return new ChecklistGoal(name, description, points, target, bonusPoints, completions);
+        }
+        else
+        {
+            throw new Exception("Unknown goal type found in file.");
+        }
     }
 }
