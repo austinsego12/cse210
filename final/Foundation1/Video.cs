@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 public class Video
@@ -26,9 +25,19 @@ public class Video
         return _comments.Count;
     }
 
-    public string GetDisplayInfo()
+    public string GetTitle()
     {
-        return $"Title: {_title}\nAuthor: {_author}\nLength: {_lengthSeconds} seconds\nNumber of Comments: {GetCommentCount()}";
+        return _title;
+    }
+
+    public string GetAuthor()
+    {
+        return _author;
+    }
+
+    public int GetLengthSeconds()
+    {
+        return _lengthSeconds;
     }
 
     public List<Comment> GetComments()
