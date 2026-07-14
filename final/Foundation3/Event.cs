@@ -20,6 +20,12 @@ public class Event
         _address = address;
     }
 
+
+    protected virtual string GetEventType()
+    {
+    return "Event";
+    }
+
     public string GetStandardDetails()
     {
         return $"Title: {_title}\n" +
@@ -36,7 +42,7 @@ public class Event
 
     public virtual string GetShortDescription()
     {
-        return $"Event: {_title} - {_date}";
+         return $"{GetEventType()}: {GetTitle()} - {GetDate()}";
     }
 
     protected string GetTitle()

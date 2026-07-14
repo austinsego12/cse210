@@ -13,6 +13,12 @@ class Program
             3.0
         );
 
+        Running running2 = new Running(
+            "10 Nov 2026",
+            45,
+            4.5
+        );
+        
         Cycling cycling = new Cycling(
             "05 Nov 2026",
             45,
@@ -25,6 +31,7 @@ class Program
             40
         );
 
+        activities.Add(running2);
         activities.Add(running);
         activities.Add(cycling);
         activities.Add(swimming);

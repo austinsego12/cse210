@@ -21,8 +21,10 @@ public class OutdoorGathering : Event
                $"Weather Forecast: {_weather}";
     }
 
-    public override string GetShortDescription()
+
+    protected override string GetEventType()
     {
-        return $"Outdoor Gathering: {GetTitle()} - {GetDate()}";
+         return "Outdoor Gathering";
     }
+
 }

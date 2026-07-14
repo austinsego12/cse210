@@ -61,20 +61,22 @@ class Program
         events.Add(outdoorGathering);
 
         foreach (Event eventItem in events)
-    {
-         Console.WriteLine();
-        Console.WriteLine("STANDARD DETAILS");
-        Console.WriteLine(eventItem.GetStandardDetails());
+{
+    Console.WriteLine();
+    Console.WriteLine("STANDARD DETAILS");
+    Console.WriteLine(eventItem.GetStandardDetails());
 
-        Console.WriteLine();
-        Console.WriteLine("FULL DETAILS");
-        Console.WriteLine(eventItem.GetFullDetails());
+    Console.WriteLine();
+    Console.WriteLine("FULL DETAILS");
+    Console.WriteLine(eventItem.GetFullDetails());
 
-        Console.WriteLine();
-        Console.WriteLine("SHORT DESCRIPTION");
-        Console.WriteLine(eventItem.GetShortDescription());
+    Console.WriteLine();
+    Console.WriteLine("SHORT DESCRIPTION");
+    Console.WriteLine(eventItem.GetShortDescription());
 
-        Console.WriteLine();
+    Console.WriteLine();
+    Console.WriteLine("------------------------------");
 }
     }
- }
+
+}

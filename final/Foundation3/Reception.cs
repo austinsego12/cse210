@@ -21,8 +21,10 @@ public class Reception : Event
                $"RSVP Email: {_rsvpEmail}";
     }
 
-    public override string GetShortDescription()
+    
+     protected override string GetEventType()
     {
-        return $"Reception: {GetTitle()} - {GetDate()}";
+        return "Reception";
     }
+
 }

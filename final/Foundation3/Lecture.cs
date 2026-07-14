@@ -25,8 +25,9 @@ public class Lecture : Event
                $"Capacity: {_capacity}";
     }
 
-    public override string GetShortDescription()
+    protected override string GetEventType()
     {
-        return $"Lecture: {GetTitle()} - {GetDate()}";
+        return "Reception";
     }
+
 }

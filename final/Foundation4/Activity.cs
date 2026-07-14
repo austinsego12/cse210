@@ -37,8 +37,9 @@ public class Activity
     public string GetSummary()
     {
         return $"{_date} {GetActivityType()} ({_minutes} min) - " +
-               $"Distance: {GetDistance():0.0} miles, " +
-               $"Speed: {GetSpeed():0.0} mph, " +
-               $"Pace: {GetPace():0.0} min per mile";
-    }
+           $"Distance: {GetDistance():0.00} miles, " +
+           $"Speed: {GetSpeed():0.00} mph, " +
+           $"Pace: {GetPace():0.00} min per mile";
+    }   
+
 }
